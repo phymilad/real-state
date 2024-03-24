@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.container p {
+  font-size: 1rem;
+  margin: 0;
+}
+.container:hover p {
+  color: red;
+}
+
+.container svg {
+  fill: "red";
+  margin: 0;
+}
