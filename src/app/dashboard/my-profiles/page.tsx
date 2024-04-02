@@ -25,10 +25,10 @@ const MyProfiles = async () => {
 
   return (
     <div>
-      {user.profiles.length ? null : (
+      {user?.profiles?.length ? null : (
         <p className={styles.text}>هیچ آگهی ثبت نشده است</p>
       )}
-      {user.profiles.map((i) => (
+      {user?.profiles?.map((i: any) => (
         <DashboardCard key={i._id} data={JSON.parse(JSON.stringify(i))} />
       ))}
     </div>

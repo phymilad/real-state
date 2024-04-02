@@ -1,8 +1,9 @@
 "use client"
 import React, { useState } from 'react'
-import styles from '@/styles/signup.module.css'
+import styles from '@/organisms/signup/signup.module.css'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+
 const Signup = () => {
 
   const navigate = useRouter()

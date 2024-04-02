@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react'
-import styles from '@/styles/signup.module.css'
+import styles from '@/organisms/signin/signin.module.css'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { signIn } from 'next-auth/react'

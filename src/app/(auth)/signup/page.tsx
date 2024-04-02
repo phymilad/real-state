@@ -13,4 +13,4 @@ const SignupPage = async () => {
   )
 }
 
-export default Signup
+export default SignupPage

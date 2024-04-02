@@ -3,14 +3,22 @@ import React from 'react'
 import styles from '@/app/dashboard/layout.module.css'
 import { User } from 'iconsax-react'
 import { Logout } from '@/molecules/logout-button/Logout'
+import { getServerSession } from 'next-auth'
+import { authOptions } from '../api/auth/[...nextauth]/route'
+import { redirect } from 'next/navigation'
 
 type DashboardLayoutProps = {
   children: React.ReactNode
 }
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
   children
 } : DashboardLayoutProps){
+
+  const session = await getServerSession(authOptions)
+  console.log("session: ", session)
+  if(!session) redirect("/signin")
+
   return (
     <div className={styles.container}>
       <div className={styles.sidebar}>

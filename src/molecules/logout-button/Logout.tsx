@@ -5,6 +5,7 @@ import { LogoutCurve } from 'iconsax-react'
 import styles from '@/molecules/logout-button/logout.module.css'
 import { useRouter } from 'next/navigation'
 import { clearCookie } from '@/utils/storage'
+import { signOut } from 'next-auth/react'
 
 export const Logout = () => {
 
@@ -12,7 +13,7 @@ export const Logout = () => {
 
   const handleLogout = () => {
     navigate.push('/signin')
-    clearCookie("token")
+    signOut()
   }
 
   return (
