@@ -41,6 +41,10 @@ const profileSchema = new Schema({
   userId: {
     type: Schema.Types.ObjectId,
     ref: "User"
+  },
+  certified: {
+    type: Boolean,
+    default: false
   }
 } , {timestamps: true})
 

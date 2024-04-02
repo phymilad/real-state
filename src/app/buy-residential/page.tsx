@@ -6,19 +6,14 @@ import Profile from "@/models/profile";
 
 export default async function BuyResidentials({ searchParams }) {
   await connectDB()
-  const profiles = await Profile.find({}).select("-userId")
+  const profiles = await Profile.find({ certified: true }).select("-userId")
 
   if (!profiles) return <h3>مشکلی پیش آمده است</h3>
   let finalData = profiles
 
-  console.log('*** finalData: ', finalData)
-  console.log('*** searchParams.category: ', searchParams.category)
-
   if (searchParams.category) {
     finalData = finalData.filter((i) => i.category === searchParams.category);
   }
-
-  console.log('finalData: ', finalData)
 
   return <div className={styles.container}>
     <div className={styles.sidebar}>

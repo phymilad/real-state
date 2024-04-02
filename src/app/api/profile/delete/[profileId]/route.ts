@@ -30,7 +30,6 @@ export async function DELETE(req: any, context: any) {
     }
 
     const res = await Profile.deleteOne({ _id: id })
-    console.log('delete result :', res)
 
     return NextResponse.json({message: 'profile is deleted successfully'}, {status: 201})
     

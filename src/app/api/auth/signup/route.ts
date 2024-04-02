@@ -15,13 +15,11 @@ export async function POST(req: any) {
   try {
     await connectDB()
     const { email, password } = await req.json()
-    console.log({email, password})
     if(!email || !password) {
       return NextResponse.json({ status: 422, message: 'Please send email and password correctly.' })
     }
     
     const userExist = await User.findOne({email: email})
-    console.log({userExist})
     if (!!userExist) {
       return NextResponse.json({ status: 422, message: 'User with this email already exist.'})
     }

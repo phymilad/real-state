@@ -45,14 +45,12 @@ export function Profile({
   const router = useRouter();
 
   const submitHandler = async () => {
-    console.log('profileData: ', profileData)
     const res = await fetch("/api/profile", {
       method: "POST",
       body: JSON.stringify(profileData),
       headers: { "Content-Type": "application/json" },
     });
     const data = await res.json();
-    console.log("data: ", data)
     if (data.error) {
     } else {
       router.refresh();
@@ -60,14 +58,12 @@ export function Profile({
   };
 
   const editHandler = async () => {
-    console.log('editHandler')
     const res = await fetch("/api/profile", {
       method: "PATCH",
       body: JSON.stringify(profileData),
       headers: { "Content-Type": "application/json" },
     });
     const data = await res.json();
-    console.log("data: ", data)
     if (data.error) {
     } else {
       router.refresh();

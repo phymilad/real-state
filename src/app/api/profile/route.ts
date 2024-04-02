@@ -9,7 +9,7 @@ import { NextResponse } from "next/server";
 export async function GET(req: any) {
   try {
     await connectDB()
-    const profiles = await Profile.find({}).select("-userId")
+    const profiles = await Profile.find({ certified: true }).select("-userId")
     return NextResponse.json({ data: profiles }, { status: 200 })
   } catch (error) {
     return NextResponse.json({error: 'There is some problem in server'}, {status: 500})
@@ -21,7 +21,6 @@ export async function POST(req: any) {
     await connectDB()
 
     const session : Session | null = await getServerSession(req)
-    console.log('session: ', session)
     
     if(!session) return NextResponse.json({ error: 'Please send all necessary data' }, {status: 401})
 
@@ -36,18 +35,6 @@ export async function POST(req: any) {
       rules,
       amenities,
     } = await req.json()
-
-    console.log({ 
-      title, 
-      description, 
-      location,
-      phone,
-      price,
-      realState,
-      category,
-      rules,
-      amenities,
-    })
 
     if(
       !title ||
@@ -80,20 +67,7 @@ export async function POST(req: any) {
       userId: new Types.ObjectId(user._id)
     })
 
-    console.log('newProfile: ', newProfile)
     return NextResponse.json({ message: 'Profile is created successfully' }, { status: 201 })
-
-    // console.log({email, password})
-    
-    // const userExist = await User.findOne({email: email})
-    // console.log({userExist})
-    // if (!!userExist) {
-    //   return NextResponse.json({ status: 422, message: 'User with this email already exist.'})
-    // }
-
-    // const hashedPassword = await hashPassword(password)
-    // await User.create({email, password: hashedPassword})
-    // return NextResponse.json({status: 201, message: 'User is created successfully.'})
 
   } catch (error) {
     return NextResponse.json({status: 500, message: error})
@@ -105,7 +79,6 @@ export async function PATCH(req: any) {
     await connectDB()
 
     const session : Session | null = await getServerSession(req)
-    console.log('session: ', session)
     
     if(!session) return NextResponse.json({ error: 'Please send all necessary data' }, {status: 401})
 
@@ -121,19 +94,6 @@ export async function PATCH(req: any) {
       rules,
       amenities,
     } = await req.json()
-
-    console.log({ 
-      _id,
-      title, 
-      description, 
-      location,
-      phone,
-      price,
-      realState,
-      category,
-      rules,
-      amenities,
-    })
 
     if(
       !_id ||

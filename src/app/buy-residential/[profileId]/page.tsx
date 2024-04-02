@@ -8,10 +8,9 @@ import ShareButton from '@/molecules/share-button/SHareButton'
 import { categories } from '@/utils/strings'
 
 const ProfileDetails = async ({ params }) => {
-  console.log('params: ', params)
   await connectDB()
-  const data = await Profile.findOne({ _id: params.profileId }) 
-  console.log('### data: ', data)
+  const data = await Profile.findOne({ _id: params.profileId })
+  
   return (
     <div className={styles.container}>
       <div className={styles.main}>

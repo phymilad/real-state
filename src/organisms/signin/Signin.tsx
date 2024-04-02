@@ -15,7 +15,6 @@ const Signin = () => {
   const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const res = await signIn("credentials", {email, password, redirect: false})
-    console.log("res: ", res)
     if(!res?.error) navigate.push("/")
     // const res = await fetch("/api/auth/signin", {
     //   method: "POST",

@@ -18,7 +18,6 @@ function Card({
   price 
 } : CardProps) {
 
-  console.log("_id: ", _id)
 
   return (
     <div className={styles.container}>

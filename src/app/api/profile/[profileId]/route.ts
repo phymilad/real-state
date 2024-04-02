@@ -6,7 +6,6 @@ export async function GET(req: any, context: any) {
   try {
     await connectDB()
     const profileId = context.params.profileId
-    console.log('profileId: ', profileId)
 
     const profile = await Profile.findOne({_id: profileId})
     if(!profile) return NextResponse.json({ error: 'THere is no profile with this id' }, { status: 404})

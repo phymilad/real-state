@@ -20,7 +20,6 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({status: 422, message: 'Email or password is wrong'})
     }
     const tokenFromCookie = req.cookies.get("token")
-    console.log({tokenFromCookie})
     const token = await generateAccessToken(email) as string
     cookies().set("token", token)
     return NextResponse.json({

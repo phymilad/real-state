@@ -15,7 +15,6 @@ function RadioList({
 
   const changeHandler = (e: any) => {
     const { name, value } = e.target;
-    console.log({name, value})
     setProfileData({ ...profileData, [name]: value });
   };
 

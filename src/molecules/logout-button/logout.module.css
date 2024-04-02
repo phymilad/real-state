@@ -7,7 +7,8 @@
 
 .container p {
   font-size: 1rem;
-  margin: 0;
+  margin: 0 !important;
+  padding: 0;
 }
 .container:hover p {
   color: red;
@@ -15,5 +16,5 @@
 
 .container svg {
   fill: "red";
-  margin: 0;
+  margin: 0 !important;
 }

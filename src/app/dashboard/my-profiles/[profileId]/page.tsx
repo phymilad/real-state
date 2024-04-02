@@ -17,7 +17,6 @@ const EditProfile = async ({
 
   await connectDB();
   const profile = await Profile.findOne({ _id: profileId })
-  console.log('profile: ', profile)
 
   if (!profile) return <h3>مشکلی پیش آمده است. لطفا دوباره امتحان کنید ...</h3>;
 

@@ -9,7 +9,6 @@ const MyProfiles = async () => {
 
   await connectDB()
   const session = await getServerSession()
-  console.log('MyProfiles page: ', session)
 
   const [ user ] = await User.aggregate([
     {$match: { email: session?.user?.email }},
@@ -20,8 +19,6 @@ const MyProfiles = async () => {
       as: 'profiles'
     }}
   ])
-
-  console.log('24 user: ', user)
 
   return (
     <div>
